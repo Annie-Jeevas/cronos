@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>180</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Результат
+--
++ Спортсмен
++ Гонка
++ Список отметок
++ Список рубежей
++ Штрафных кругов
+--
++ Занести в историю</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>170</y>
+      <w>210</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Спортсмен
+--
++ Фамилия Имя
++ Дата рождения
++ Команда
++ точность
++ скорострельность
++ средняя скорость
++ действующий
++ пол
++ очков в тотале
+--
++ получитьВсеРезультаты </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>950</x>
+      <y>170</y>
+      <w>210</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Гонка
+--
++ Место
++ Время
++ Тип гонки
+
+--
++ получитьСписокУчастников 
++ получитьСписокРезультатов</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>470</y>
+      <w>260</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Тип гонки
+--
++ Название типа
++ Рубежей
++ Участников
++ Распределение очков
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>210</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..N</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>210</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..N
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>330</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
