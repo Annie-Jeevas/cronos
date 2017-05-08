@@ -23,7 +23,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
+      <x>200</x>
       <y>170</y>
       <w>210</w>
       <h>230</h>
@@ -36,7 +36,6 @@
 + точность
 + скорострельность
 + средняя скорость
-+ действующий
 + пол
 + очков в тотале
 --
@@ -56,6 +55,8 @@
 + Место
 + Время
 + Тип гонки
++ Результаты
++ Список участников
 
 --
 + получитьСписокУчастников 
@@ -83,15 +84,15 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
+      <x>400</x>
       <y>210</y>
-      <w>200</w>
+      <w>190</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=0..N</panel_attributes>
-    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -118,5 +119,64 @@ m2=1</panel_attributes>
 m1=1
 m2=1</panel_attributes>
     <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>560</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Команда
+--
++ Название
++ Иконка
++ ID
++ Участники</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>390</y>
+      <w>50</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..N</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>400</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Отметка
+--
++ ID
++ Результат
++ Время
++ Название
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>310</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..N</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
 </diagram>

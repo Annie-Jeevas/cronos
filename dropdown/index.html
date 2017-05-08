@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<style>
+.delivery_block{
+width: 270px;
+padding: 24px 0 0;
+color: #8c8c8c;
+font-size: 11px;
+}
+.delivery_block .delivery_list {
+padding: 3px 6px 0 6px;
+height: 22px;
+cursor: pointer;
+border-radius: 4px;
+margin: 0 20px 0 0;
+color: #ed4226;
+border: 1px solid #efefef;
+
+width: 237px;
+z-index: 11;
+background: #fcfcfc;
+}
+.delivery_list #btn {
+background: url(dropdown.png);
+width: 17px;
+height: 18px;
+float: right;
+}
+.delivery_list span {
+padding: 2px 0 0 2px;
+display: block;
+font-weight: bold;
+}
+.delivery_block ul.cities_list {
+margin-top: 0px;
+z-index: 10;
+background: #fcfcfc;
+position: absolute;
+border-radius: 3px;
+width: 249px;
+padding: 0;
+border: 1px solid #eee;
+display: none;
+}
+ul.cities_list li {
+padding: 6px 9px;
+list-style-type: none;
+border-top: 1px solid #efefef;
+}
+ul.cities_list li:hover {
+cursor: pointer;
+background: #fff;
+}
+.delivery_block .delivery_text {
+padding: 3px 5px;
+margin: 5px 0 0 3px;
+}
+</style>
+
+<script>
+$(function(){
+/* выбор города */
+$('.delivery_list').click(function(){
+$(".cities_list").slideToggle('fast');
+});
+$('ul.cities_list li').click(function(){
+var tx = $(this).html();
+var tv = $(this).attr('alt');
+$(".cities_list").slideUp('fast');
+$(".delivery_list span").html(tx);
+$(".delivery_text").html(tv);
+});
+})
+</script>
+</head>
+<body>
+<div class="delivery_block">
+<div class="delivery_list"><div id="btn"> </div><span>Москва</span></div>
+
+<ul class="cities_list">
+<li alt="Самовывоз из офиса или курьером, Дмитровское шоссе, 9-а, стр. 5, 12:00—20:00">Москва</li>
+<li alt="Лаврский проезд, 5, 11:00—18:00">Санкт-Петербург</li>
+<li alt="пр. Ленина 12-а, 9:00—18:00">Нижний Новгород</li>
+<li alt="ул. Карима Тинчурина, 9, 9:00—18:00">Казань</li>
+<li alt="ул. Варфоломеева, 87/89, оф. 41, 9:00—18:00">Ростов-на-Дону</li>
+<li alt="ул. Радомская, 27, 9:00—18:00">Волгоград</li>
+<li alt="ул. 9-ая Тихая, 11, 9:00—18:00">Краснодар</li>
+<li alt="ул. Ульяновская, 37/41, оф. 3, 9:00—18:00">Саратов</li>
+<li alt="ул. Мориса Тореза, 67, оф. 225, домофон 225, 9:00—20:00, сб 10:00—14:00">Самара</li>
+<li alt="ул. Завокзальная, 36, оф. 105, 9:00—18:00">Екатеринбург</li>
+<li alt="ул. Доватора 17-а, 9:00—18:00">Челябинск</li>
+<li alt="ул. Лермонтова, 81, оф. 228, 9:00—18:00">Омск</li>
+<li alt="ул. Октябрьская, 2, оф. 4, 9:00—18:00, сб 10:00—15:00">Новосибирск</li>
+<li alt="ул. Академика Киренского, 56-а, 9:00—18:00">Красноярск</li>
+<li alt="ул. Луначарского, 75, 9:00—18:00">Пермь</li>
+<li alt="ул. Кавказская, 8, 9:00—18:00, сб 10:00—14:00">Уфа</li>
+</ul>
+
+<div class="delivery_text">Самовывоз из офиса или курьером, Дмитровское шоссе, 9-а, стр. 5, 12:00—20:00</div>
+</div>
+
+</div>
+</body>
+</html>
