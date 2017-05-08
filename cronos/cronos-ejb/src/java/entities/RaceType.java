@@ -40,6 +40,31 @@ public class RaceType implements Serializable, IWritableEntity, IJsonParsable {
         this.id = id;
     }
 
+    public String getRaceTypeName() {
+        return raceTypeName;
+    }
+
+    public void setRaceTypeName(String raceTypeName) {
+        this.raceTypeName = raceTypeName;
+    }
+
+    public int getParticipantsNumber() {
+        return participantsNumber;
+    }
+
+    public void setParticipantsNumber(int participantsNumber) {
+        this.participantsNumber = participantsNumber;
+    }
+
+    public byte getShootingNumber() {
+        return shootingNumber;
+    }
+
+    public void setShootingNumber(byte shootingNumber) {
+        this.shootingNumber = shootingNumber;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
