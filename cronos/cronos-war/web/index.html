@@ -9,8 +9,36 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="loader.css" rel="stylesheet">
     </head>
     <body>
-        <div>TODO write content</div>
+        <script type="text/javascript" charset="utf-8">
+            function callController() {
+                var request = new XMLHttpRequest();
+                request.open('GET', 'SportsmenController');
+                request.send();
+                request.onreadystatechange = function () {
+                    if (request.readyState !== 4)
+                        return;
+                    if (request.status !== 200) {// обработать ошибку
+                        alert(request.status + ': ' + request.statusText); // пример вывода: 404: Not Found
+                    } else {
+                        // вывести результат
+                        var answer = JSON.parse(request.responseText); // responseText -- текст ответа.
+                        document.getElementById('loader').style.display = 'none';
+                        
+                    }
+                };
+                //лоадер
+            }
+            ;
+            document.getElementById('loader').style.display = 'block';
+           
+        </script>
+        <div id="loader" style="width: 100">
+            <div id="box"></div>
+            <div id="hill"></div>
+        </div>
+        <button onclick="callController()">call</button>
     </body>
 </html>

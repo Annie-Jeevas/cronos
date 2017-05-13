@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> 
+        <script src="http://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+    </head>
+    <body>
+
+        <div id="mylist" style="width: 400px; height: 300px;padding: 20px;"></div>
+        <div style="padding: 20px;">
+            <input type="text" id="value" style='width:300px' value="new value" />s          
+            <input type="button" style='width:148px' value="add new item" onclick="add_item()" />
+        </div>
+        <script type="text/javascript" charset="utf-8">
+            function add_item() {
+                var list = $$('mylist');
+                var data = {
+                    name:  document.getElementById("value").value,
+                    birthdate: "1998-12-12",
+                    accuracy: "0.8",
+                    gender: "true",
+                    team: {id: 1, teamName: "Russia", icon: "icon"}
+                };
+                list.add(data);
+            }
+            ;
+            webix.ready(function () {
+                webix.ui({
+                    container: "mylist",
+                    view: "list",
+                    id: "mylist",
+                    url: "http://localhost:8080/cronos-war/SportsmenController",
+                    datatype: "json",
+                    type: {
+                        width: "auto",
+                        template: "#team.teamName#. #name# (#accuracy#)"
+                    },
+                    select: "multiselect"
+                });
+
+                $$('mylist').attachEvent("onAfterSelect", function (id) {
+                    var value = this.getItem(id).name;
+                    document.getElementById("value").value = value;
+                });
+
+                var dp = new webix.DataProcessor({
+                    master: $$('mylist'),
+                    url: "connector->http://localhost:8080/cronos-war/SportsmenController"
+                });
+            });
+
+        </script>
+    </body>
+</html>
