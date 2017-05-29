@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+        <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> 
+        <script src="http://cdn.webix.com/edge/webix.js" type="text/javascript"></script> 
+
+    </head>
+    <body>       
+        <script type="text/javascript" charset="utf-8">
+            webix.ui({
+                // container:"layout_div",
+                id: "layout",
+                height: 550,
+                width: 700,
+                rows: [
+                    {template: "row 1", height: 35},
+                    {template: "row 1"},
+                    {view: "resizer"},
+                    {template: "row 2"},
+                    {view: "resizer"},
+                    {cols: [
+                            {
+                                id: "a1",
+                                template: "column 1",
+                                width: 150
+                            },
+                            {
+                                view: "resizer",
+                                id: "resizer"
+                            },
+                            {
+                                template: "column 2"
+                            },
+                            {
+                                template: "column 3"
+                            }
+                        ]
+                    }
+                ]
+            }).show();
+        </script>
+
+    </body>
+</html>
