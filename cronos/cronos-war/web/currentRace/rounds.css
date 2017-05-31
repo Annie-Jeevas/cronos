@@ -1,0 +1,90 @@
+ .containerForRounds {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 12px;
+          border-radius: 12px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #42565e;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          display: inline-block;
+      }
+      .round {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          width: 20px;
+          height: 20px;
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 20px;
+          border-radius: 31px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #333333;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          float: left;
+          margin: 0px 10px 0px 10px;
+      }
+      .redRound {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          width: 20px;
+          height: 20px;
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 20px;
+          border-radius: 31px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #990000;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          float: left;
+          margin: 0px 10px 0px 10px;
+      }
+      .whiteRound {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          width: 20px;
+          height: 20px;
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 20px;
+          border-radius: 31px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #CCCCCC;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          float: left;
+          margin: 0px 10px 0px 10px;
+      }

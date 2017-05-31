@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <title>TODO supply a title</title> 
+    <link type="text/css" rel="stylesheet" href="rounds.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body> 
+  
+  <script type="text/javascript" charset="utf-8">
+  var number = 0;
+  var results = [1,0,0,1,1];
+    function drawRound() {        
+        if (results[number] === 1)        
+        document.getElementById('round'+number).className = 'whiteRound';
+        else document.getElementById('round'+number).className = 'redRound';
+        number++; 
+    }
+</script>
+<!--подумать об адаптивности летом-->
+<div class="containerForRounds">
+    <div id="round0" class="round"></div> <!--строить id по принципу round+id_result+_+[0-4]-->
+    <div id="round1" class="round"></div>
+    <div id="round2" class="round"></div>
+    <div id="round3" class="round"></div>
+    <div id="round4" class="round"></div>
+</div>
+<button onclick="drawRound()">click</button>
+</body>
+</html>
