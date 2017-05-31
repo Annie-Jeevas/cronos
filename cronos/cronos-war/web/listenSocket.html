@@ -14,7 +14,7 @@ and open the template in the editor.
         <script type="text/javascript">
             var wsUri = "ws://" + document.location.host + document.location.pathname + "whiteboard";
             var websocket = new WebSocket(wsUri);
-            var result = {};
+            var mark = {};
             websocket.onerror = function (evt) {
                 onError(evt);
             };
@@ -32,10 +32,17 @@ and open the template in the editor.
 
             function onMessage(evt) {
                 console.log("received: " + evt.data);
-                result = evt.data;
+                mark = JSON.parse(evt.data);//положили json-ку
+                processResult(mark);
             }
             function start() {
                 sendText("start");
+            }
+            
+            function processResult(result){                
+                if (mark.type==="Lap"){}
+                else if (mark.type==="Shoot"){}
+                    
             }
         </script>
         <button id="send" onclick="start()">
