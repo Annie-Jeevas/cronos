@@ -82,8 +82,8 @@ public class Race implements Serializable, IWritableEntity, IJsonParsable {
     }
 
     @Override
-    public String getFriendlyName() {
-        return (type.getFriendlyName() + " in " + location);
+    public String FriendlyName() {
+        return (type.FriendlyName() + " in " + location);
     }
 
      @Override

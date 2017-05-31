@@ -138,6 +138,7 @@ public class Sportsman implements Serializable, IWritableEntity, IJsonParsable {
     public String toString() {
         return id.toString();
     }
+    @Override
     public String toJson() {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -147,9 +148,9 @@ public class Sportsman implements Serializable, IWritableEntity, IJsonParsable {
             return "{}";
         }
     }
-
+   
     @Override
-    public String getFriendlyName() {
+    public String FriendlyName() {
         return name;
     }
     

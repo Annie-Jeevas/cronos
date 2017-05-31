@@ -23,7 +23,7 @@ and open the template in the editor.
             function add_item() {
                 var list = $$('mylist');
                 var data = {
-                    name:  document.getElementById("value").value,
+                    name: document.getElementById("value").value,
                     birthdate: "1998-12-12",
                     accuracy: "0.8",
                     gender: "true",
@@ -37,7 +37,7 @@ and open the template in the editor.
                     container: "mylist",
                     view: "list",
                     id: "mylist",
-                    url: "http://localhost:8080/cronos-war/SportsmenController",
+                    url: "http://" + document.location.host + "/cronos-war/SportsmenController",
                     datatype: "json",
                     type: {
                         width: "auto",
@@ -53,7 +53,7 @@ and open the template in the editor.
 
                 var dp = new webix.DataProcessor({
                     master: $$('mylist'),
-                    url: "connector->http://localhost:8080/cronos-war/SportsmenController"
+                    url: "connector->http://" + document.location.host + "/cronos-war/SportsmenController"
                 });
             });
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var wsUri = "ws://" + document.location.host + document.location.pathname + "whiteboard";
+            var websocket = new WebSocket(wsUri);
+            var result = {};
+            websocket.onerror = function (evt) {
+                onError(evt);
+            };
+            websocket.onmessage = function (evt) {
+                onMessage(evt);
+            };
+
+            function onError(evt) {
+                writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+            }
+            function sendText(json) {
+                console.log("sending text: " + json);
+                websocket.send(json);
+            }
+
+            function onMessage(evt) {
+                console.log("received: " + evt.data);
+                result = evt.data;
+            }
+            function start() {
+                sendText("start");
+            }
+        </script>
+        <button id="send" onclick="start()">
+            Start Race!
+        </button>
+    </body>
+</html>

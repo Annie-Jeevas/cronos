@@ -107,7 +107,7 @@ public class Team implements Serializable, IWritableEntity, IJsonParsable {
     }
 
     @Override
-    public String getFriendlyName() {
+    public String FriendlyName() {
         return teamName;
     }
 

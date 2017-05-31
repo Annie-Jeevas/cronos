@@ -40,7 +40,7 @@ public class RaceResult implements Serializable,IJsonParsable {
     private Race race;
     
     @JsonIgnore    
-    @OneToMany(mappedBy = "race")
+    @OneToMany(mappedBy = "raceResult")
     private List<Mark> raceResults = new ArrayList<Mark>();
     
     

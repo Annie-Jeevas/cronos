@@ -26,7 +26,7 @@ public abstract class Mark implements Serializable, IJsonParsable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long time;
+    private Long markTime;
     
     @ManyToOne
     private RaceResult raceResult;
@@ -40,13 +40,15 @@ public abstract class Mark implements Serializable, IJsonParsable {
         this.id = id;
     }
 
-    public Long getTime() {
-        return time;
+    public Long getMarkTime() {
+        return markTime;
     }
 
-    public void setTime(Long time) {
-        this.time = time;
+    public void setMarkTime(Long markTime) {
+        this.markTime = markTime;
     }
+
+   
 
     public RaceResult getRaceResult() {
         return raceResult;

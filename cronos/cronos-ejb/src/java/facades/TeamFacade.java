@@ -6,6 +6,7 @@
 package facades;
 
 import entities.Team;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,6 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author Анюта
  */
 @Stateless
+@LocalBean
 public class TeamFacade extends AbstractFacade<Team>{
     
     @PersistenceContext(unitName = "cronos-ejbPU")

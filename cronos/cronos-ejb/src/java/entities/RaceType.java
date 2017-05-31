@@ -91,7 +91,7 @@ public class RaceType implements Serializable, IWritableEntity, IJsonParsable {
     }
 
     @Override
-    public String getFriendlyName() {
+    public String FriendlyName() {
         return raceTypeName;
     }
     

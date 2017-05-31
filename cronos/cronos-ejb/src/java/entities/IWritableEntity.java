@@ -5,10 +5,13 @@
  */
 package entities;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  *
  * @author Анюта
  */
 public interface IWritableEntity {
-    public String getFriendlyName();
+    @JsonIgnore
+    public String FriendlyName();
 }
