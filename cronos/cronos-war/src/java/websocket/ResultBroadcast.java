@@ -34,16 +34,16 @@ import org.codehaus.jackson.map.ObjectMapper;
  *
  * @author Анюта
  */
-@ServerEndpoint("/ResultBroadcast")
+@ServerEndpoint(value = "/ResultBroadcast")
 public class ResultBroadcast {
 
     @EJB
     private RaceFacade raceFac;
-    private static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());    
+    private static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());
     private List<Mark> resultList = new ArrayList<Mark>();
-    private Boolean raceIsOn; //флаг того, что какая-то гонка начата, надо сбросить по завершении
+    private Boolean raceIsOn = false; //флаг того, что какая-то гонка начата, надо сбросить по завершении
     //нужен флаг на результате, начальный/конечный/ни то ни се
-    
+
     //потом надо разбирать сообщение от клиента? тут вроде только старт будет со стороны клиента
     //паузу и остановку выкидываем, скорость подберем в файле
     //алгоритм такой - ловим месседж от клиента, вытягиваем из файла результат, транслируем месседжи с указанием того, начальный он или конечный
@@ -52,63 +52,68 @@ public class ResultBroadcast {
     //на клиенте ловим месседжи, по типу результата вычисляем что рисовать - мишень или блок отметки
     //нужен нулевой выстрел без типа попадания - отметка прихода на стрельбу для отрисовки пустых мишененей
     //для мишени определяем попал или нет - показываем красненький или беленький кружочек вместо черного
-    private List<Mark> currentHistory; //для истории - лист с отправленными метками - заносим туда после отправки
+    private List<Mark> currentHistory = new ArrayList<Mark>(); //для истории - лист с отправленными метками - заносим туда после отправки
 
     public List<Mark> getResultList() {
         return resultList;
     }
-    
+
     public void readFromFile() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        ShootMarkContainer shootMarkContainer = (ShootMarkContainer) mapper.readValue(new FileInputStream("web/shooting.json"), ShootMarkContainer.class);
-        LapMarkContainer lapMarkContainer = (LapMarkContainer) mapper.readValue(new FileInputStream("web/laps.json"), LapMarkContainer.class);        
+        ShootMarkContainer shootMarkContainer = (ShootMarkContainer) mapper.readValue(new FileInputStream("C:\\Users\\Анюта\\Desktop\\Универ\\6 СЕМЕСТР\\РПС\\Курсовик Biathlon\\cronos\\cronos-war\\web\\shooting.json"), ShootMarkContainer.class);
+        LapMarkContainer lapMarkContainer = (LapMarkContainer) mapper.readValue(new FileInputStream("C:\\Users\\Анюта\\Desktop\\Универ\\6 СЕМЕСТР\\РПС\\Курсовик Biathlon\\cronos\\cronos-war\\web\\laps.json"), LapMarkContainer.class);
         resultList.addAll(shootMarkContainer.getMarks());
         resultList.addAll(lapMarkContainer.getMarks());
         Collections.sort(resultList, new MarkComparator());
     }
-    
+
     @OnMessage
-    public void broadcastResult(String message) {
-        if (message == "start") {
+    public void broadcastResult(String message, Session session) throws InterruptedException, IOException, EncodeException {
+        //if (message == "start") {
+       
+            readFromFile();
             if (raceIsOn) {
-                //отправить ошибку
+                session.getBasicRemote().sendText("{errorMessage:\"Race is already on\"}");
                 return;
             }
             raceIsOn = true;
-            for (Session peer : peers) {
-                try {
-                    for (int i = 0; i < 3; i++) {
-                        System.out.println("broadcastFigure: " + figure);
-                        Thread.sleep(500); //здесь будет result.next.time
-                        peer.getBasicRemote().sendObject(figure);
-                    }
-                } catch (IOException | EncodeException | InterruptedException ex) {
-                    Logger.getLogger(MyWhiteboard.class.getName()).log(Level.SEVERE, null, ex);
+            Long now = 0L;
+            resultList.get(0).setStartOrEnd(Boolean.TRUE);
+            resultList.get(resultList.size() - 1).setStartOrEnd(Boolean.FALSE);
+            for (Mark m : resultList) { //для каждой отметки
+                System.out.println("broadcastFigure: " + m.toString());
+                Thread.sleep(m.getMarkTime() - now);//ждем столько, сколько до текущей отметки от предыдущей
+                for (Session peer : peers) {  //и для каждого пира                  
+                    peer.getBasicRemote().sendText(m.toJson()); //рассылаем отметку
                 }
+                now = m.getMarkTime(); //меняем предыдущую отметку
+                currentHistory.add(m); //записываем в историю
+                //где-то тут должна быть запись в БД, подумаю потом
+                if ((m.getStartOrEnd() != null) && (!m.getStartOrEnd())) {
+                    raceIsOn = false;
+                    currentHistory.clear();
+                    System.out.println("end of race");
+                } //если последняя метка, то сбрасываем флаг и историю
             }
-        }
-        
-    }
-}
+        //}
 
-public List<RaceResult> findAllResults(){
-        List<RaceResult> results = new ArrayList<RaceResult>();
-        //может быть, возьму из файла
-        return results;
     }
-    
+
     @OnOpen
-        public void onOpen(Session peer) {
+    public void onOpen(Session peer) throws IOException, EncodeException {
         peers.add(peer);
-        resultList = findAllResults();
-        raceIsOn = false;
-        
+        for (Mark m : currentHistory) {
+            for (Session s : peers) {
+                s.getBasicRemote().sendText(m.toJson());
+            }
+
+        }
+
     }
 
     @OnClose
-        public void onClose(Session peer) {
+    public void onClose(Session peer) {
         peers.remove(peer);
-
     }
 
 }

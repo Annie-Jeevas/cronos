@@ -56,6 +56,40 @@ public class Race implements Serializable, IWritableEntity, IJsonParsable {
         this.id = id;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(Date eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public List<RaceResult> getRaceResults() {
+        return raceResults;
+    }
+
+    public void setRaceResults(List<RaceResult> raceResults) {
+        this.raceResults = raceResults;
+    }
+
+    public RaceType getType() {
+        return type;
+    }
+
+    public void setType(RaceType type) {
+        this.type = type;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

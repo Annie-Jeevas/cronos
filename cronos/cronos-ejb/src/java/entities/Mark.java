@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 /**
  *
@@ -26,7 +27,9 @@ public abstract class Mark implements Serializable, IJsonParsable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long markTime;
+    private Long markTime; //в миллисекундах
+    @Transient
+    private Boolean startOrEnd; //true - начало, false - конец, null - ни то ни то
     
     @ManyToOne
     private RaceResult raceResult;
@@ -57,6 +60,15 @@ public abstract class Mark implements Serializable, IJsonParsable {
     public void setRaceResult(RaceResult raceResult) {
         this.raceResult = raceResult;
     }
+
+    public Boolean getStartOrEnd() {
+        return startOrEnd;
+    }
+
+    public void setStartOrEnd(Boolean startOrEnd) {
+        this.startOrEnd = startOrEnd;
+    }
+    
     
     
     @Override

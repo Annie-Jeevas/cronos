@@ -1,0 +1,75 @@
+{
+    "marks": [{
+            "id": 1,
+            "markTime": 0,
+            "startOrEnd": true,
+            "raceResult": {
+                "id": 1,
+                "racer": {
+                    "id": 1
+                },
+                "race": {
+                    "id": 1
+                }
+            },
+            "type": "Lap"
+        },
+        {
+            "id": 2,
+            "markTime": 20000,
+            "startOrEnd": true,
+            "raceResult": {
+                "id": 1,
+                "racer": {
+                    "id": 1
+                },
+                "race": {
+                    "id": 1
+                }
+            },
+            "type": "Lap"
+        }, {
+            "id": 3,
+            "markTime": 30000,
+            "startOrEnd": true,
+            "raceResult": {
+                "id": 1,
+                "racer": {
+                    "id": 1
+                },
+                "race": {
+                    "id": 1
+                }
+            },
+            "type": "Lap"
+        }
+        , {
+            "id": 4,
+            "markTime": 42000,
+            "startOrEnd": true,
+            "raceResult": {
+                "id": 1,
+                "racer": {
+                    "id": 1
+                },
+                "race": {
+                    "id": 1
+                }
+            },
+            "type": "Lap"
+        }, {
+            "id": 5,
+            "markTime": 60000,
+            "startOrEnd": true,
+            "raceResult": {
+                "id": 1,
+                "racer": {
+                    "id": 1
+                },
+                "race": {
+                    "id": 1
+                }
+            },
+            "type": "Lap"
+        }]
+}
