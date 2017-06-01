@@ -1,0 +1,121 @@
+{"marks":[{
+  "id": 1,
+  "markTime": 100000,
+  "startOrEnd": true,
+  "raceResult": {
+    "id": 1,
+    "racer": {
+      "id": 1,
+      "name": null,
+      "gender": false,
+      "birtdate": null,
+      "accuracy": 0,
+      "team": null
+    },
+    "race": {
+      "id": 1,
+      "location": null,
+      "eventTime": null,
+      "type": null
+    }
+  },
+  "slip": false,
+  "type": "Shoot"
+},
+{
+  "id": 2,
+  "markTime": 102000,
+  "startOrEnd": true,
+  "raceResult": {
+    "id": 1,
+    "racer": {
+      "id": 1,
+      "name": null,
+      "gender": false,
+      "birtdate": null,
+      "accuracy": 0,
+      "team": null
+    },
+    "race": {
+      "id": 1,
+      "location": null,
+      "eventTime": null,
+      "type": null
+    }
+  },
+  "slip": false,
+  "type": "Shoot"
+},
+{
+  "id": 3,
+  "markTime": 1,
+  "startOrEnd": true,
+  "raceResult": {
+    "id": 1,
+    "racer": {
+      "id": 1,
+      "name": null,
+      "gender": false,
+      "birtdate": null,
+      "accuracy": 0,
+      "team": null
+    },
+    "race": {
+      "id": 1,
+      "location": null,
+      "eventTime": null,
+      "type": null
+    }
+  },
+  "slip": false,
+  "type": "Shoot"
+},
+{
+  "id": 4,
+  "markTime": 1,
+  "startOrEnd": true,
+  "raceResult": {
+    "id": 1,
+    "racer": {
+      "id": 1,
+      "name": null,
+      "gender": false,
+      "birtdate": null,
+      "accuracy": 0,
+      "team": null
+    },
+    "race": {
+      "id": 1,
+      "location": null,
+      "eventTime": null,
+      "type": null
+    }
+  },
+  "slip": false,
+  "type": "Shoot"
+},
+{
+  "id": 5,
+  "markTime": 1,
+  "startOrEnd": true,
+  "raceResult": {
+    "id": 1,
+    "racer": {
+      "id": 1,
+      "name": null,
+      "gender": false,
+      "birtdate": null,
+      "accuracy": 0,
+      "team": null
+    },
+    "race": {
+      "id": 1,
+      "location": null,
+      "eventTime": null,
+      "type": null
+    }
+  },
+  "slip": true,
+  "type": "Shoot"
+}
+]}
