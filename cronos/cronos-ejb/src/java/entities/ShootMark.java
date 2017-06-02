@@ -23,6 +23,10 @@ public class ShootMark extends Mark implements Serializable, IJsonParsable {
     private boolean slip;
     @Transient
     private final String type = "Shoot";
+    @Transient
+    private int shootingID;
+    @Transient
+    private int numderInShooting;
 
     public String getType() {
         return type;
@@ -35,6 +39,22 @@ public class ShootMark extends Mark implements Serializable, IJsonParsable {
 
     public void setSlip(boolean slip) {
         this.slip = slip;
+    }
+
+    public int getShootingID() {
+        return shootingID;
+    }
+
+    public void setShootingID(int shootingID) {
+        this.shootingID = shootingID;
+    }
+
+    public int getNumderInShooting() {
+        return numderInShooting;
+    }
+
+    public void setNumderInShooting(int numderInShooting) {
+        this.numderInShooting = numderInShooting;
     }
 
     
