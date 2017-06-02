@@ -11,11 +11,107 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+            <style type="text/css">
+        .containerForRounds {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 12px;
+          border-radius: 12px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #42565e;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          display: inline-block;
+      }
+      .round {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          width: 20px;
+          height: 20px;
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 20px;
+          border-radius: 31px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #333333;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          float: left;
+          margin: 0px 10px 0px 10px;
+      }
+      .redRound {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          width: 20px;
+          height: 20px;
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 20px;
+          border-radius: 31px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #990000;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          float: left;
+          margin: 0px 10px 0px 10px;
+      }
+      .whiteRound {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          width: 20px;
+          height: 20px;
+          padding: 20px;
+          overflow: hidden;
+          border: none;
+          -webkit-border-radius: 20px;
+          border-radius: 31px;
+          font: normal 16px/1 "Times New Roman", Times, serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          background: #CCCCCC;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+          text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+          float: left;
+          margin: 0px 10px 0px 10px;
+      }
+  </style>
         <script type="text/javascript">
             var wsUri = "ws://" + document.location.host + "/cronos-war/ResultBroadcast";
             var websocket = new WebSocket(wsUri);
-            websocket.onerror = function (evt) {onError(evt);};
-            websocket.onmessage = function (evt) {onMessage(evt);};
+            websocket.onerror = function (evt) {
+                onError(evt);
+            };
+            websocket.onmessage = function (evt) {
+                onMessage(evt);
+            };
 
             function onError(evt) {
                 writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
@@ -26,10 +122,33 @@ and open the template in the editor.
             }
 
             function onMessage(evt) {
-                console.log("received: " + evt.data);                
+                console.log("received: " + evt.data);
+                //для каждого марк смотрим результата
+                //для каждой новой марки типа лап рисуем новую плашечку
+                //для стрельб нужен контейнер - shootingID
+                //проверяем айди контейнера стрельбы - рисуем кружочек в соответствующий див
+                //
+                        //итак, проверка на тип марки
+                        //если стрельба - проверка на айди контейнера
+                        //записываем его в сет
+                        //если в сете его не было, рисуем новую плашку
+                        //если был - дорисовываем в старую
+                        //нужен номер выстрела в контейнере - numberInShooting
+                var mark = JSON.parse(evt.data);
+                var newdiv = document.createElement('div');
+                newdiv.innerHTML = mark.raceResult.id;
+                newdiv.className = 'containerForRounds';
+                document.body.appendChild(newdiv);
             }
         </script>
         <div>TODO write content</div>
+<!--        <div class="containerForRounds" style="display: none">
+            <div id="round0" class="round"></div> строить id по принципу round+id_result+_+[0-4]
+            <div id="round1" class="round"></div>
+            <div id="round2" class="round"></div>
+            <div id="round3" class="round"></div>
+            <div id="round4" class="round"></div>
+        </div>-->
         <button onclick="sendText('start')">start</button>
     </body>
 </html>
