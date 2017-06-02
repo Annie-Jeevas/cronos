@@ -37,7 +37,7 @@ public class SportsmenController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String answer;
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper(); //
         if ("GET".equals(request.getMethod())) {
             try {
                 answer = mapper.writeValueAsString(sportsmenFac.findAll());
