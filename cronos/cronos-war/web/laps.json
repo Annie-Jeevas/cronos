@@ -16,7 +16,7 @@
         },
         {
             "id": 2,
-            "markTime": 20000,
+            "markTime": 2000,
             "startOrEnd": true,
             "raceResult": {
                 "id": 1,
@@ -30,7 +30,7 @@
             "type": "Lap"
         }, {
             "id": 3,
-            "markTime": 30000,
+            "markTime": 3000,
             "startOrEnd": true,
             "raceResult": {
                 "id": 1,
@@ -45,7 +45,7 @@
         }
         , {
             "id": 4,
-            "markTime": 42000,
+            "markTime": 4200,
             "startOrEnd": true,
             "raceResult": {
                 "id": 1,
@@ -59,7 +59,7 @@
             "type": "Lap"
         }, {
             "id": 5,
-            "markTime": 60000,
+            "markTime": 6000,
             "startOrEnd": true,
             "raceResult": {
                 "id": 1,

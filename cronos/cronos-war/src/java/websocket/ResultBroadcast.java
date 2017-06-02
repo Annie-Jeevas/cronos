@@ -7,20 +7,14 @@ package websocket;
 
 import entities.Mark;
 import entities.MarkComparator;
-import entities.RaceResult;
-import entities.ShootMark;
 import facades.RaceFacade;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.AbstractCollection;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.websocket.EncodeException;
 import javax.websocket.OnClose;
@@ -41,8 +35,7 @@ public class ResultBroadcast {
     private RaceFacade raceFac;
     private static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());
     private List<Mark> resultList = new ArrayList<Mark>();
-    private Boolean raceIsOn = false; //флаг того, что какая-то гонка начата, надо сбросить по завершении
-    //нужен флаг на результате, начальный/конечный/ни то ни се
+    private Boolean raceIsOn = false; //флаг того, что какая-то гонка начата, надо сбросить по завершении    
 
     //потом надо разбирать сообщение от клиента? тут вроде только старт будет со стороны клиента
     //паузу и остановку выкидываем, скорость подберем в файле
@@ -52,7 +45,7 @@ public class ResultBroadcast {
     //на клиенте ловим месседжи, по типу результата вычисляем что рисовать - мишень или блок отметки
     //нужен нулевой выстрел без типа попадания - отметка прихода на стрельбу для отрисовки пустых мишененей
     //для мишени определяем попал или нет - показываем красненький или беленький кружочек вместо черного
-    private List<Mark> currentHistory = new ArrayList<Mark>(); //для истории - лист с отправленными метками - заносим туда после отправки
+    private static List<Mark> currentHistory = new ArrayList<Mark>(); //для истории - лист с отправленными метками - заносим туда после отправки
 
     public List<Mark> getResultList() {
         return resultList;
@@ -69,16 +62,15 @@ public class ResultBroadcast {
 
     @OnMessage
     public void broadcastResult(String message, Session session) throws InterruptedException, IOException, EncodeException {
-        //if (message == "start") {
-       
+        if ("start".equals(message)) {
+
             readFromFile();
             if (raceIsOn) {
                 session.getBasicRemote().sendText("{errorMessage:\"Race is already on\"}");
                 return;
             }
             raceIsOn = true;
-            Long now = 0L;
-            resultList.get(0).setStartOrEnd(Boolean.TRUE);
+            Long now = 0L;            
             resultList.get(resultList.size() - 1).setStartOrEnd(Boolean.FALSE);
             for (Mark m : resultList) { //для каждой отметки
                 System.out.println("broadcastFigure: " + m.toString());
@@ -89,13 +81,13 @@ public class ResultBroadcast {
                 now = m.getMarkTime(); //меняем предыдущую отметку
                 currentHistory.add(m); //записываем в историю
                 //где-то тут должна быть запись в БД, подумаю потом
-                if ((m.getStartOrEnd() != null) && (!m.getStartOrEnd())) {
+                if (!m.getStartOrEnd()) {
                     raceIsOn = false;
                     currentHistory.clear();
                     System.out.println("end of race");
                 } //если последняя метка, то сбрасываем флаг и историю
             }
-        //}
+        }
 
     }
 
@@ -103,9 +95,7 @@ public class ResultBroadcast {
     public void onOpen(Session peer) throws IOException, EncodeException {
         peers.add(peer);
         for (Mark m : currentHistory) {
-            for (Session s : peers) {
-                s.getBasicRemote().sendText(m.toJson());
-            }
+            peer.getBasicRemote().sendText(m.toJson());
 
         }
 

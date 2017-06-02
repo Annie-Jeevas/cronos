@@ -15,15 +15,17 @@ import static org.junit.Assert.*;
  * @author Анюта
  */
 public class MarkTest {
-    private Mark mark;
+    private ShootMark mark;
     public MarkTest() {
     }
     
     @Before
     public void setUp() {
-        mark = new LapMark();
+        mark = new ShootMark();
         mark.setId(1L);
+        mark.setShootingID(1);
         mark.setMarkTime(1L);
+        mark.setNumderInShooting(1);
         RaceResult raceResult = new RaceResult();
         raceResult.setId(1L);
         Race race = new Race();
@@ -34,6 +36,7 @@ public class MarkTest {
         raceResult.setRacer(racer);
         mark.setRaceResult(raceResult);
         mark.setStartOrEnd(Boolean.TRUE);
+        
     }
 
     @Test

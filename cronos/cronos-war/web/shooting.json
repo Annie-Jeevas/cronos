@@ -20,6 +20,8 @@
     }
   },
   "slip": false,
+  "shootingID":1,
+  "numderInShooting":1,
   "type": "Shoot"
 },
 {
@@ -44,6 +46,8 @@
     }
   },
   "slip": false,
+  "shootingID":1,
+  "numderInShooting":2,
   "type": "Shoot"
 },
 {
@@ -68,6 +72,8 @@
     }
   },
   "slip": false,
+  "shootingID":1,
+  "numderInShooting":3,
   "type": "Shoot"
 },
 {
@@ -92,6 +98,8 @@
     }
   },
   "slip": false,
+  "shootingID":1,
+  "numderInShooting":4,
   "type": "Shoot"
 },
 {
@@ -116,6 +124,8 @@
     }
   },
   "slip": true,
+  "shootingID":1,
+  "numderInShooting":5,
   "type": "Shoot"
 }
 ]}
